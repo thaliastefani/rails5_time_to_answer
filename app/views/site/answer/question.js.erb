@@ -1,0 +1,23 @@
+var element = document.getElementById('list-group_<%= @answer.id %>');
+
+element.classList.remove('list-group-item-success');
+element.classList.remove('list-group-item-danger');
+
+if (<%= @answer.correct %>) {
+  element.classList.add('list-group-item-success');
+  $.bootstrapGrowl('Você acertou! \\o/', {
+    type: 'success', // (null, 'info', 'danger', 'success')
+    align: 'right', // ('left', 'right', or 'center')
+    allow_dismiss: true, // If true then will display a cross to close the popup.
+    stackup_spacing: 10 // spacing between consecutively stacked growls.
+    });
+} else {
+  element.classList.add('list-group-item-danger');
+  $.bootstrapGrowl('Você errou! :(', {
+    type: 'danger', // (null, 'info', 'danger', 'success')
+    align: 'right', // ('left', 'right', or 'center')
+    allow_dismiss: true, // If true then will display a cross to close the popup.
+    stackup_spacing: 10 // spacing between consecutively stacked growls.
+    });
+} 
+
